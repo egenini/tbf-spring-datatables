@@ -13,7 +13,7 @@ public class DataTablesResponse {
 	
 	public void build( Page<?> page ) {
 		
-		filteredResultsCount = page.getTotalPages() * page.getSize();
+		filteredResultsCount = page.getTotalPages() == 0 ? 0 : page.getTotalPages() / page.getSize();
 		totalResultsCount    = (int) page.getTotalElements();
 		
 		setData(page.getContent());
