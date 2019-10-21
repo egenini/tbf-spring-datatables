@@ -1,4 +1,4 @@
-package ar.com.tbf.ar.com.tbf.datatables;
+package ar.com.tbf.datatables;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -9,10 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
-import ar.com.tbf.ar.com.tbf.datatables.request.Column;
-import ar.com.tbf.ar.com.tbf.datatables.request.DataTablesRequest;
-import ar.com.tbf.ar.com.tbf.datatables.request.Order;
 import ar.com.tbf.common.data.SpecSearchCriteria;
+import ar.com.tbf.datatables.request.Column;
+import ar.com.tbf.datatables.request.DataTablesRequest;
+import ar.com.tbf.datatables.request.Order;
 
 public class DatatablesRequest2SpecSearchCriteriaAndPaging {
 
