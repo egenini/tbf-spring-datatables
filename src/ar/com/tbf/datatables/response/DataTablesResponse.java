@@ -1,5 +1,6 @@
 package ar.com.tbf.datatables.response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -9,12 +10,15 @@ public class DataTablesResponse {
 	private Integer draw = 1;
 	private Integer recordsTotal;
 	private Integer recordsFiltered = 0;
-	private List<?> data;
+	private List<?> data = null;
 
 	public void build(Page<?> page) {
 
-		this.setRecordsTotal( (int) page.getTotalElements() );
-		this.setData(         page.getContent()             );
+		if( page != null ) {
+			
+			this.setRecordsTotal( (int) page.getTotalElements() );
+			this.setData(         page.getContent()             );
+		}
 	}
 
 	public Integer getDraw() {
@@ -36,7 +40,7 @@ public class DataTablesResponse {
 		this.recordsFiltered = recordsFiltered;
 	}
 	public List<?> getData() {
-		return data;
+		return data == null ? new ArrayList<Object>(1) : data;
 	}
 	public void setData(List<?> data) {
 		this.data = data;
