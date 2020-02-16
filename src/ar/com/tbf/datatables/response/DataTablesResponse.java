@@ -2,6 +2,7 @@ package ar.com.tbf.datatables.response;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 
@@ -19,6 +20,12 @@ public class DataTablesResponse {
 			this.setRecordsTotal( (int) page.getTotalElements() );
 			this.setData(         page.getContent()             );
 		}
+	}
+
+	public void build(Page<?> page, List<Map<String, Object>> data) {
+
+		this.setRecordsTotal( (int) page.getTotalElements() );
+		this.setData(         data                          );
 	}
 
 	public Integer getDraw() {
@@ -45,4 +52,5 @@ public class DataTablesResponse {
 	public void setData(List<?> data) {
 		this.data = data;
 	}
+
 }
