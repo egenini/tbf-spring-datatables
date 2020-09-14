@@ -9,9 +9,9 @@ import org.springframework.data.domain.Page;
 public class DataTablesResponse {
 
 	private Integer draw = 1;
-	private Integer recordsTotal;
+	private Integer recordsTotal    = 0;
 	private Integer recordsFiltered = 0;
-	private List<?> data = null;
+	private List<?> data = new ArrayList<Object>(1);
 
 	public void build(Page<?> page) {
 
