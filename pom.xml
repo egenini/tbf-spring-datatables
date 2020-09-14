@@ -24,7 +24,7 @@
 	</repositories>
   	<dependencies>
   		<dependency>
-  			<groupId>com.github.egenini</groupId>
+  			<groupId>tbf-spring</groupId>
   			<artifactId>tbf-spring-data</artifactId>
   			<version>2.2.1</version>
   		</dependency>
