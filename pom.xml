@@ -3,6 +3,7 @@
   <groupId>tbf-spring</groupId>
   <artifactId>tbf-spring-datatables</artifactId>
   <version>2.2.3</version>
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
