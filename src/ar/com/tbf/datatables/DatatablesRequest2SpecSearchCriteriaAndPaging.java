@@ -20,8 +20,13 @@ public class DatatablesRequest2SpecSearchCriteriaAndPaging {
 	private Deque<Object> output = new LinkedList<>();
 	Pageable page = null;
 	private static final String defaultOperation = ":*";
+	private boolean usingSearchBuilder = true;
 	
 	public DatatablesRequest2SpecSearchCriteriaAndPaging build( DataTablesRequest request, Map<String, String> attributeOperation) {
+		return build(request, attributeOperation, null);
+	}
+
+		public DatatablesRequest2SpecSearchCriteriaAndPaging build(DataTablesRequest request, Map<String, String> attributeOperation, Map<String, String> attributeDataType) {
 
 		String operation = defaultOperation;
 		String prefix    = null;
@@ -50,52 +55,61 @@ public class DatatablesRequest2SpecSearchCriteriaAndPaging {
 			page = PageRequest.of( request.getStart() == 0 ? 0 : request.getStart() / request.getLength(), request.getLength(), Sort.by( orders ) );
 		}
 		
-		String allSearch = request.getSearch().getValue().trim();
-				
-		for( Column column : request.getColumns() ) {
+		if( request.getSearchBuilder() != null && request.getSearchBuilder().getLogic() != null ) {
 			
-			if( column.isSearchable() && column.getSearch().getValue() != null ) {
+			request.getSearchBuilder().build(output, attributeDataType);
+			
+			this.setUsingSearchBuilder(true);
+		}
+		else {
+			
+			String allSearch = request.getSearch().getValue().trim();
+			
+			for( Column column : request.getColumns() ) {
 				
-				value = column.getSearch().getValue().trim();
-				
-				value = ! allSearch.isEmpty() ? allSearch : value;
-				
-				if( ! value.isEmpty() ) {
+				if( column.isSearchable() && column.getSearch().getValue() != null ) {
 					
-					prefix    = "";
+					value = column.getSearch().getValue().trim();
 					
-					if( attributeOperation.containsKey( column.getData() )) {
+					value = ! allSearch.isEmpty() ? allSearch : value;
+					
+					if( ! value.isEmpty() ) {
 						
-						operation = attributeOperation.get( column.getData() );
-					}
-					else {
-						operation = defaultOperation;
-					}
-					
-					long count = operation.chars().filter(ch -> ch == '*').count();
-					
-					if( count != 0 ) {
+						prefix    = "";
 						
-						// puede estar adelante o atrás
-						if( operation.substring(1 ).equals("*") ) {
+						if( attributeOperation.containsKey( column.getData() )) {
 							
-							prefix    = "*";
-							operation = operation.substring( 0, 1 );
+							operation = attributeOperation.get( column.getData() );
 						}
-					}
-					
-					if( output.size() < 2) {
+						else {
+							operation = defaultOperation;
+						}
 						
-						output.push( new SpecSearchCriteria( column.getData(), operation, prefix, value, suffix ) );	
-					}
-					if( output.size() == 2) {
+						long count = operation.chars().filter(ch -> ch == '*').count();
 						
-						output.push("AND");
+						if( count != 0 ) {
+							
+							// puede estar adelante o atrás
+							if( operation.substring(1 ).equals("*") ) {
+								
+								prefix    = "*";
+								operation = operation.substring( 0, 1 );
+							}
+						}
 						
-					}else if ( output.size() > 2) {
-						
-						output.push( new SpecSearchCriteria( column.getData(), operation, prefix, value, suffix ) );
-						output.push("AND");
+						if( output.size() < 2) {
+							
+							output.push( new SpecSearchCriteria( column.getData(), operation, prefix, value, suffix ) );	
+						}
+						if( output.size() == 2) {
+							
+							output.push("AND");
+							
+						}else if ( output.size() > 2) {
+							
+							output.push( new SpecSearchCriteria( column.getData(), operation, prefix, value, suffix ) );
+							output.push("AND");
+						}
 					}
 				}
 			}
@@ -114,4 +128,13 @@ public class DatatablesRequest2SpecSearchCriteriaAndPaging {
 	public Pageable getPageable() {
 		return page;
 	}
+
+	public boolean isUsingSearchBuilder() {
+		return usingSearchBuilder;
+	}
+
+	public void setUsingSearchBuilder(boolean usingSearchBuilder) {
+		this.usingSearchBuilder = usingSearchBuilder;
+	}
+
 }
