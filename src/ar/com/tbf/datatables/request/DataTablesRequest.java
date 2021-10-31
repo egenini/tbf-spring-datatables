@@ -7,12 +7,12 @@ import ar.com.tbf.datatables.request.searchbuilder.SearchBuilder;
 
 public class DataTablesRequest {
 
-	private int draw;
-	private int start;
-	private int length;
-	private List<Column> columns = new ArrayList<Column>();
-	private Search search = null;
-	private List<Order> order = new ArrayList<Order>();
+	private int           draw;
+	private int           start;
+	private int           length;
+	private List<Column>  columns = new ArrayList<Column>();
+	private Search        search = null;
+	private List<Order>   order = new ArrayList<Order>();
 	private SearchBuilder searchBuilder = null;
 
 	public int getDraw() {

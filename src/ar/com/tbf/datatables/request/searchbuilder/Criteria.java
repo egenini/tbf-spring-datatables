@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Criteria {
 
-	private String condition;
-	private String origData;
-	private ArrayList<String> value;
-	private String type;
+	private String              condition;
+	private String              origData;
+	private ArrayList<String>   value;
+	private String              type;
 	private ArrayList<Criteria> criteria;
-	private String logic = null;
+	private String              logic = null;
 	
 	public String getCondition() {
 		return condition;

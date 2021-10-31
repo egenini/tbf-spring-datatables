@@ -135,7 +135,7 @@ public class SearchBuilder {
 								this.getValueByType(criteria.getOrigData(), criteria.getValue().get(0), criteria.getType(), attributeDataType) ) );	
 						
 						Object valueByType = this.getValueByType(criteria.getOrigData(), criteria.getValue().get(1), criteria.getType(), attributeDataType);
-						// si este es un valor de una fecha sumo 1 día
+						// si este es un valor de una fecha sumo 1 dï¿½a
 						if( attributeDataType.containsKey( criteria.getOrigData())) {
 							
 							javaType = attributeDataType.get( criteria.getOrigData() );
@@ -208,7 +208,7 @@ public class SearchBuilder {
 								this.getValueByType(criteria.getOrigData(), criteria.getValue().get(0), criteria.getType(), attributeDataType) ) );	
 						
 						Object valueByType = this.getValueByType(criteria.getOrigData(), criteria.getValue().get(1), criteria.getType(), attributeDataType);
-						// si este es un valor de una fecha sumo 1 día
+						// si este es un valor de una fecha sumo 1 dï¿½a
 						javaType = this.getJavaType( criteria.getOrigData(), attributeDataType );
 						
 						if( javaType.equals("Timestamp") || javaType.equals("Date") ) {
@@ -241,7 +241,7 @@ public class SearchBuilder {
 					if( ! criteria.getValue().isEmpty() && ! criteria.getValue().get(0).isEmpty() ) {
 											
 						Object valueByType = this.getValueByType(criteria.getOrigData(), criteria.getValue().get(0), criteria.getType(), attributeDataType);
-						// si este es un valor de una fecha sumo 1 día
+						// si este es un valor de una fecha sumo 1 dï¿½a
 						javaType = this.getJavaType( criteria.getOrigData(), attributeDataType );
 						
 						if( javaType.equals("Timestamp") || javaType.equals("Date") ) {
@@ -412,7 +412,7 @@ public class SearchBuilder {
 						newValue =  Short.valueOf(value);
 					}
 				}catch(Exception e) {					
-					throw new PredicateException( "No se pudo interpretar número "+ value +" para el atributo "+ name );
+					throw new PredicateException( "No se pudo interpretar nï¿½mero "+ value +" para el atributo "+ name );
 				}
 				break;
 			case TYPE_STRING:
@@ -489,7 +489,7 @@ public class SearchBuilder {
 	}
 	
 	/**
-	 * El método es tivial pero está para evidenciar su intención.
+	 * El mÃ©todo es tivial pero estÃ¡ para evidenciar su intenciÃ³n.
 	 * @param s
 	 * @return
 	 */

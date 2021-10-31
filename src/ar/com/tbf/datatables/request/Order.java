@@ -2,7 +2,7 @@ package ar.com.tbf.datatables.request;
 
 public class Order {
 
-	private int column;
+	private int    column;
 	private String dir;
 	
 	public int getColumn() {

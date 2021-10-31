@@ -11,6 +11,7 @@ public class Search {
 	public void setValue(String value) {
 		this.value = value;
 	}
+	
 	public String getRegex() {
 		return regex;
 	}

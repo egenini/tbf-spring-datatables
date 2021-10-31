@@ -2,11 +2,11 @@ package ar.com.tbf.datatables.request;
 
 public class Column {
 
-	 private String data;
-	 private String name;
+	 private String  data;
+	 private String  name;
 	 private boolean searchable = false;
-	 private boolean orderable = false;
-	 private Search search;
+	 private boolean orderable  = false;
+	 private Search  search;
 	 
 	public String getData() {
 		return data;
