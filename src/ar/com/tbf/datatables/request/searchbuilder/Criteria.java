@@ -8,7 +8,8 @@ public class Criteria {
 	private String origData;
 	private ArrayList<String> value;
 	private String type;
-	private SearchBuilder searchBuilder;
+	private ArrayList<Criteria> criteria;
+	private String logic = null;
 	
 	public String getCondition() {
 		return condition;
@@ -34,10 +35,16 @@ public class Criteria {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public SearchBuilder getSearchBuilder() {
-		return searchBuilder;
+	public ArrayList<Criteria> getCriteria() {
+		return criteria;
 	}
-	public void setSearchBuilder(SearchBuilder searchBuilder) {
-		this.searchBuilder = searchBuilder;
+	public void setCriteria(ArrayList<Criteria> criteria) {
+		this.criteria = criteria;
+	}
+	public String getLogic() {
+		return logic;
+	}
+	public void setLogic(String logic) {
+		this.logic = logic;
 	}
 }
