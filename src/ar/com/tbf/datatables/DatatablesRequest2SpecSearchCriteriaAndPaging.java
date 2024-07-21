@@ -20,7 +20,7 @@ public class DatatablesRequest2SpecSearchCriteriaAndPaging {
 	private Deque<Object> output = new LinkedList<>();
 	Pageable page = null;
 	private static final String defaultOperation = ":*";
-	private boolean usingSearchBuilder = true;
+	private boolean usingSearchBuilder = false;
 	
 	public DatatablesRequest2SpecSearchCriteriaAndPaging build( DataTablesRequest request, Map<String, String> attributeOperation) {
 		return build(request, attributeOperation, null);

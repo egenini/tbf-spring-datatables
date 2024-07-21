@@ -412,7 +412,7 @@ public class SearchBuilder {
 						newValue =  Short.valueOf(value);
 					}
 				}catch(Exception e) {					
-					throw new PredicateException( "No se pudo interpretar n�mero "+ value +" para el atributo "+ name );
+					throw new PredicateException( "No se pudo interpretar número "+ value +" para el atributo "+ name );
 				}
 				break;
 			case TYPE_STRING:
